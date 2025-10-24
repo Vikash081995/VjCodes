@@ -1,31 +1,38 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
-import Root from "../pages/Root";
 import AuthLayout from "../layout/AuthLayout/AuthLayout";
+import RootLayout from "../layout/RootLayout/RootLayout";
+import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import FullStack from "../pages/FullStack";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
-    Component: Root,
+    Component: RootLayout,
     children: [
-      { index: true, Component: Home },
       {
-        path: "full-stack",
-        lazy: () =>
-          import("../pages/FullStack").then(({ default: FullStack }) => ({
-            Component: FullStack,
-          })),
+        index: true,
+        Component: Home,
       },
-    ],
-  },
-  {
-    path: "auth",
-    Component: AuthLayout,
-    children: [
-      { path: "login", Component: Login },
-      { path: "register", Component: Register },
+      {
+        path: "/auth",
+        Component: AuthLayout,
+        children: [
+          {
+            path: "login",
+            Component: Login,
+          },
+          {
+            path: "register",
+            Component: Register,
+          },
+        ],
+      },
+      {
+        path: "/fullstack",
+        Component: FullStack
+      }
     ],
   },
 ]);
