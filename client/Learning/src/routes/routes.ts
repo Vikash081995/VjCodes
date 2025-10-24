@@ -1,10 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthLayout from "../layout/AuthLayout/AuthLayout";
-import RootLayout from "../layout/RootLayout/RootLayout";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import FullStack from "../pages/FullStack";
+import { AuthLayout,RootLayout } from "../layout";
+import { Home,Login,FullStack ,Register} from "../pages";
 
 export const routes = createBrowserRouter([
   {
